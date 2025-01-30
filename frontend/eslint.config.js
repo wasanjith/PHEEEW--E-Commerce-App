@@ -32,8 +32,9 @@ export default [
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
-        ],
+      ],
       'react/prop-types': 'off',
+      'no-unused-vars': 'off', // Turn off red underlining for unused variables
     },
   },
 ]
