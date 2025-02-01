@@ -29,7 +29,7 @@ const CartPage = () => {
                 ))}
               </div>
             )}
-            {cart.length > 0 && <PeopleAlsoBought />}
+            
                   </motion.div>
                   
                   {cart.length > 0 && (
@@ -43,7 +43,8 @@ const CartPage = () => {
                       <GiftCouponCard />
                   </motion.div>
                   )}
-        </div>
+              </div>
+              {cart.length > 0 && <PeopleAlsoBought />}
       </div>
     </div>
   );
