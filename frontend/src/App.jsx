@@ -17,9 +17,13 @@ function App() {
   const { getCartItems } = useCartStore();
 
     useEffect(() => {
-        getCartItems();
         checkAuth();
-  }, [getCartItems,checkAuth]);
+    }, [checkAuth]);
+    
+    useEffect(() => {
+        if (!user) return;
+        getCartItems();
+    }, [getCartItems, user]);
 
   if (checkingAuth) return <LoadingSpinner />;
 
