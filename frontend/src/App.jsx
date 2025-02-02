@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
 import LoadingSpinner from "./components/LoadingSpinner";
+import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
 import AdminPage from "./pages/AdminPage";
 import Navbar from "./components/Navbar";
 import { Toaster } from "react-hot-toast";
@@ -54,10 +55,8 @@ function App() {
             }
           />
           <Route path="/category/:category" element={<CategoryPage />} />
-          <Route
-            path="/cart"
-            element={user ? <CartPage /> : <Navigate to="/login" />}
-          />
+          <Route path="/cart" element={user ? <CartPage /> : <Navigate to="/login" />} />
+          <Route path="/purchese-success" element={user ? <PurchaseSuccessPage /> : <Navigate to="/login" />} />
         </Routes>
       </div>
       <Toaster />
