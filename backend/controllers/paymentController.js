@@ -40,7 +40,7 @@ export const createCheckoutSession = async (req, res) => {
             mode: "payment",
             success_url: `${process.env.CLIENT_URL}/purchese-success?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${process.env.CLIENT_URL}/purchese-cancel`,
-            discount: coupon
+            discounts: coupon
                 ? [
                     {
                         coupon: await createStripeCoupon(coupon.discountPercentage),
@@ -118,8 +118,9 @@ async function createStripeCoupon(discountPercentage) {
 }
 
 async function createNewCoupon(userId) {
+    await Coupon.findOneAndDelete({ userId });
     const newCoupon = new Coupon({
-        code: "GIFT" + Math.round().toString(36).substring(2, 8).toUpperCase(),
+        code: "GIFT" + Math.random().toString(36).substring(2, 8).toUpperCase(),
         discountPercentage: 10,
         expirationDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
         userId: userId,

@@ -1,11 +1,12 @@
 import Product from "../models/productModel.js";
 import User from "../models/userModel.js";
+import Order from "../models/orderModel.js";
 
 export const analytics = async (req, res) => {
   try {
     const analyticsData = await getAnalyticsData();
-    const startDate = new Date();
-    const endDate = new Date(endDate.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const endDate = new Date();
+    const startDate = new Date(endDate.getTime() - 7 * 24 * 60 * 60 * 1000);
 
     const dailySalesData = await getDailySalesData(startDate, endDate);
     res.json({ analyticsData, dailySalesData });
