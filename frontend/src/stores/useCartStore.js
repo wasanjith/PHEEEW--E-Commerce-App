@@ -38,6 +38,11 @@ export const useCartStore = create((set, get) => ({
 		} catch (error) {
 			toast.error(error.response.data.message || "An error occurred");
 		}
+    },
+    
+    clearCart: async () => {
+        set({ cart: [], coupon: null, total: 0, subtotal: 0 });
+        
 	},
     
     calculateTotals: () => {
